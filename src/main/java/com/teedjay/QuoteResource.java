@@ -15,19 +15,20 @@ import java.util.List;
 public class QuoteResource {
 
     @GET
+    @Path("list")
     public List<Quote> allQuotesAsList() {
         return Arrays.asList(Quote.createDebugData(), Quote.createDebugData());
     }
 
     @GET
+    @Path("response")
     public Response allQuotesAsResponse() {
         return Response.ok(Arrays.asList(Quote.createDebugData(), Quote.createDebugData())).build();
     }
 
     @GET
+    @Path("error")
     public Response alwaysReturnError() {
-        //System.out.println("Headers = " + headers);
-        //headers.getRequestHeaders().forEach((s,t) -> t.forEach(h -> System.out.println(h)));
         return Response.status(Response.Status.BAD_REQUEST).entity("Fucked up").build();
     }
 
